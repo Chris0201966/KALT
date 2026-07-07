@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalt Yükseltme Formu</title>
+<style>
+  :root {
+    --blue: #001E4B;
+    --red: #FA1400;
+    --cream: #FFFCF2;
+    --dust: #9BACC3;
+    --light-dust: #D2DAE4;
+    --dark-dust: #717D8F;
+    --darkest-dust: #49515C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #F4F2EC;
+    color: var(--darkest-dust);
+    margin: 0;
+    padding: 24px 16px 60px;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid var(--light-dust);
+    border-radius: 10px;
+    padding: 28px 28px 32px;
+  }
+  h1 {
+    font-size: 22px;
+    color: var(--blue);
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--dark-dust);
+    margin: 0 0 20px;
+    font-style: italic;
+  }
+  .note {
+    background: var(--cream);
+    border-left: 4px solid var(--red);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 24px;
+    border-radius: 0 6px 6px 0;
+  }
+  .section-title {
+    background: var(--blue);
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 6px 6px 0 0;
+    margin: 24px 0 0;
+  }
+  .section-body {
+    border: 1px solid var(--light-dust);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 14px 14px 4px;
+    margin-bottom: 4px;
+  }
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 520px) {
+    .grid2 { grid-template-columns: 1fr; }
+  }
+  label {
+    display: block;
+    font-size: 12px;
+    color: var(--dark-dust);
+    margin: 10px 0 4px;
+  }
+  input[type="text"], select, textarea {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid var(--light-dust);
+    border-radius: 6px;
+    color: var(--darkest-dust);
+    background: #fff;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+  textarea { min-height: 56px; resize: vertical; }
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    align-items: center;
+  }
+  button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--blue);
+    background: var(--blue);
+    color: var(--cream);
+    cursor: pointer;
+  }
+  button.secondary {
+    background: #fff;
+    color: var(--blue);
+  }
+  button:active { transform: scale(0.98); }
+  #status {
+    font-size: 13px;
+    color: var(--dark-dust);
+  }
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--dark-dust);
+    margin-top: 28px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Kalt Yükseltme Bilgi Formu</h1>
+  <p class="subtitle">Bağlantılı robot desteği &mdash; BITCo Tüketici Hizmetleri'ne yükseltme</p>
+
+  <div class="note">
+    Göndermeden önce aşağıdaki tüm alanları doldurun. Bir bilgi edinilemiyorsa, alanı boş bırakmak yerine &ldquo;bilinmiyor &ndash; [sebep]&rdquo; yazın.
+  </div>
+
+  <div class="section-title">1. Tüketici ve Uygulama Bilgileri</div>
+  <div class="section-body">
+    <div class="grid2">
+      <div>
+        <label for="f-name">Tüketici adı</label>
+        <input type="text" id="f-name">
+      </div>
+      <div>
+        <label for="f-contact">Tüketici iletişim bilgisi (telefon / e-posta)</label>
+        <input type="text" id="f-contact">
+      </div>
+    </div>
+    <label for="f-applogin">BISSELL Connect Uygulaması giriş e-postası</label>
+    <input type="text" id="f-applogin">
+  </div>
+
+  <div class="section-title">2. Cihaz Bilgileri</div>
+  <div class="section-body">
+    <div class="grid2">
+      <div>
+        <label for="f-serial">Seri numarası</label>
+        <input type="text" id="f-serial">
+      </div>
+      <div>
+        <label for="f-mac">MAC adresi (tam, son 4 hane değil)</label>
+        <input type="text" id="f-mac">
+      </div>
+      <div>
+        <label for="f-sku">Model / SKU</label>
+        <input type="text" id="f-sku">
+      </div>
+      <div>
+        <label for="f-mfgdate">Üretim tarihi (biliniyorsa)</label>
+        <input type="text" id="f-mfgdate">
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">3. Ağ ve Cihaz Ortamı</div>
+  <div class="section-body">
+    <div class="grid2">
+      <div>
+        <label for="f-isp">İnternet servis sağlayıcısı (ISP)</label>
+        <input type="text" id="f-isp">
+      </div>
+      <div>
+        <label for="f-router">Router modeli</label>
+        <input type="text" id="f-router">
+      </div>
+      <div>
+        <label for="f-phone">Telefon modeli</label>
+        <input type="text" id="f-phone">
+      </div>
+      <div>
+        <label for="f-os">Telefon işletim sistemi sürümü</label>
+        <input type="text" id="f-os">
+      </div>
+      <div>
+        <label for="f-appver">Uygulama sürümü</label>
+        <input type="text" id="f-appver">
+      </div>
+      <div>
+        <label for="f-band">Wi-Fi bandı doğrulandı mı?</label>
+        <select id="f-band">
+          <option value="">Seçiniz</option>
+          <option value="2.4GHz confirmed">2.4GHz doğrulandı</option>
+          <option value="5GHz only (needs switching)">Sadece 5GHz (değiştirilmesi gerekiyor)</option>
+          <option value="Unknown">Bilinmiyor</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">4. Sorun Detayları</div>
+  <div class="section-body">
+    <label for="f-error">Görülen tam hata mesajı(ları)</label>
+    <input type="text" id="f-error">
+    <label for="f-steps">Tamamlanan standart sorun giderme adımları</label>
+    <textarea id="f-steps"></textarea>
+    <label for="f-portal">IoT Portal bulguları (Kalt'ın portal erişimi varsa)</label>
+    <textarea id="f-portal"></textarea>
+    <label for="f-reason">Yükseltme gerekçesi</label>
+    <textarea id="f-reason"></textarea>
+  </div>
+
+  <div class="section-title">Gönderim Bilgisi</div>
+  <div class="section-body">
+    <label for="f-inbox">Paylaşılan gelen kutusu adresi (onaylandığında) &mdash; Farhan'ın dikkatine</label>
+    <input type="text" id="f-inbox" placeholder="ornek: connected-support-eu@bissell.com">
+  </div>
+
+  <div class="actions">
+    <button id="btn-copy">E-posta için kopyala</button>
+    <button id="btn-mail" class="secondary">E-postada aç</button>
+    <button id="btn-clear" class="secondary">Formu temizle</button>
+    <span id="status"></span>
+  </div>
+
+  <footer>BISSELL &mdash; Gizli / Confidential</footer>
+</div>
+
+<script>
+function val(id) {
+  var el = document.getElementById(id);
+  var v = el.value.trim();
+  return v.length ? v : "not provided";
+}
+function buildBody() {
+  return [
+    "1. CONSUMER & APP DETAILS",
+    "Consumer name: " + val("f-name"),
+    "Consumer contact: " + val("f-contact"),
+    "App login email: " + val("f-applogin"),
+    "",
+    "2. DEVICE DETAILS",
+    "Serial number: " + val("f-serial"),
+    "MAC address: " + val("f-mac"),
+    "Model / SKU: " + val("f-sku"),
+    "Manufactured date: " + val("f-mfgdate"),
+    "",
+    "3. NETWORK & DEVICE ENVIRONMENT",
+    "ISP: " + val("f-isp"),
+    "Router model: " + val("f-router"),
+    "Phone model: " + val("f-phone"),
+    "Phone OS version: " + val("f-os"),
+    "App version: " + val("f-appver"),
+    "Wi-Fi band: " + val("f-band"),
+    "",
+    "4. ISSUE DETAILS",
+    "Error message(s): " + val("f-error"),
+    "Troubleshooting steps completed: " + val("f-steps"),
+    "IoT Portal findings: " + val("f-portal"),
+    "Reason for escalation: " + val("f-reason")
+  ].join("\n");
+}
+function buildSubject() {
+  var nameEl = document.getElementById("f-name").value.trim();
+  var errEl = document.getElementById("f-error").value.trim();
+  var name = nameEl.length ? nameEl : "Consumer name";
+  var err = errEl.length ? errEl : "issue description";
+  return "Kalt Escalation - " + name + " - " + err;
+}
+document.getElementById("btn-copy").addEventListener("click", function () {
+  var text = "Subject: " + buildSubject() + "\n\n" + buildBody();
+  var status = document.getElementById("status");
+  function showCopied() {
+    status.textContent = "Kopyalandı";
+    setTimeout(function () { status.textContent = ""; }, 2000);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(showCopied, function () {
+      fallbackCopy(text, showCopied);
+    });
+  } else {
+    fallbackCopy(text, showCopied);
+  }
+});
+function fallbackCopy(text, cb) {
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch (e) {}
+  document.body.removeChild(ta);
+  cb();
+}
+document.getElementById("btn-mail").addEventListener("click", function () {
+  var to = document.getElementById("f-inbox").value.trim();
+  var mailto = "mailto:" + encodeURIComponent(to) +
+    "?subject=" + encodeURIComponent(buildSubject()) +
+    "&body=" + encodeURIComponent(buildBody());
+  window.location.href = mailto;
+});
+document.getElementById("btn-clear").addEventListener("click", function () {
+  var fields = document.querySelectorAll("input, textarea, select");
+  for (var i = 0; i < fields.length; i++) { fields[i].value = ""; }
+});
+</script>
+</body>
+</html>
